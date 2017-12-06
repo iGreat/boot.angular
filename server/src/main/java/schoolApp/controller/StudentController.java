@@ -1,6 +1,7 @@
 package schoolApp.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import schoolApp.common.config.StatusCode;
@@ -16,7 +17,7 @@ public class StudentController {
     private StudentService studentService;
 
     @RequestMapping("/save")
-    public StatusCode saveStudent(StudentDto studentDto) {
+    public StatusCode saveStudent(@RequestBody StudentDto studentDto) {
         try {
             studentService.saveStudent(studentDto);
             return new StatusCode(true);

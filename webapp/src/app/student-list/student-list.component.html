@@ -1,0 +1,21 @@
+<button type="button" (click)="newStudent()">New</button>
+
+<fieldset>
+  <legend>Student List</legend>
+
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Gender</th>
+    </tr>
+    <tr *ngFor="let student of studentList" (click)="selectStudent(student)">
+      <td>{{student.name}}</td>
+      <td>{{student.age}}</td>
+      <td>{{student.gender}}</td>
+    </tr>
+  </table>
+</fieldset>
+
+<app-student-detail [student]="selectedStudent"></app-student-detail>
+

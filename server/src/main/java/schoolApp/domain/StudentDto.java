@@ -2,6 +2,7 @@ package schoolApp.domain;
 
 import schoolApp.common.enums.Gender;
 
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.UUID;
 
@@ -19,6 +20,7 @@ public class StudentDto implements Serializable {
         this.id = id;
     }
 
+    @NotNull
     public int getAge() {
         return age;
     }
@@ -27,6 +29,7 @@ public class StudentDto implements Serializable {
         this.age = age;
     }
 
+    @NotNull
     public String getName() {
         return name;
     }
@@ -35,6 +38,7 @@ public class StudentDto implements Serializable {
         this.name = name;
     }
 
+    @NotNull
     public Gender getGender() {
         return gender;
     }
