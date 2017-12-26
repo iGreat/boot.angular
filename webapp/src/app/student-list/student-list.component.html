@@ -1,20 +1,30 @@
-<button type="button" (click)="newStudent()">New</button>
+<button mat-raised-button color="primary" (click)="newStudent()">New</button>
 
 <fieldset>
   <legend>Student List</legend>
 
-  <table>
-    <tr>
-      <th>Name</th>
-      <th>Age</th>
-      <th>Gender</th>
-    </tr>
-    <tr *ngFor="let student of studentList" (click)="selectStudent(student)">
-      <td>{{student.name}}</td>
-      <td>{{student.age}}</td>
-      <td>{{student.gender}}</td>
-    </tr>
-  </table>
+  <mat-table [dataSource]="dataSource">
+
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Name</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.name}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="age">
+      <mat-header-cell *matHeaderCellDef> Age</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.age}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="gender">
+      <mat-header-cell *matHeaderCellDef> Gender</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.gender}}</mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="['name','age','gender']"></mat-header-row>
+    <mat-row *matRowDef="let element; columns: ['name','age','gender']"></mat-row>
+  </mat-table>
+
+  <mat-paginator [pageSize]="10" [pageSizeOptions]="[5,10,20]"></mat-paginator>
 </fieldset>
 
 <app-student-detail [student]="selectedStudent"></app-student-detail>

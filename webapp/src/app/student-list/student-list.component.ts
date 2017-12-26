@@ -1,6 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Student} from '../model/student';
 import {StudentService} from '../service/student.service';
+import {MatPaginator, MatTableDataSource} from '@angular/material';
 
 @Component({
   selector: 'app-student-list',
@@ -8,9 +9,11 @@ import {StudentService} from '../service/student.service';
   styleUrls: ['./student-list.component.css']
 })
 export class StudentListComponent implements OnInit {
-  studentList: Student[];
+  dataSource: any;
 
   selectedStudent: Student;
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(private studentService: StudentService) {
   }
@@ -18,7 +21,8 @@ export class StudentListComponent implements OnInit {
   ngOnInit() {
     this.studentService.getStudents()
       .subscribe(p => {
-        this.studentList = p;
+        this.dataSource = new MatTableDataSource<Student>(p);
+        this.dataSource.paginator = this.paginator;
       });
   }
 

@@ -9,6 +9,8 @@ import {APP_CONFIG, AppConfig} from './app.config';
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {StudentService} from './service/student.service';
+import {MatButtonModule, MatFormFieldModule, MatInputModule, MatPaginatorModule, MatSelectModule, MatTableModule} from '@angular/material';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -19,7 +21,14 @@ import {StudentService} from './service/student.service';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatInputModule,
+    MatTableModule,
+    MatPaginatorModule,
     HttpClientModule
   ],
   providers: [
