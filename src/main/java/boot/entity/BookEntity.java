@@ -19,6 +19,7 @@ public class BookEntity {
         this.id = id;
     }
 
+    @Column(length = 200)
     public String getBookName() {
         return bookName;
     }
