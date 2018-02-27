@@ -1,7 +1,70 @@
-<mat-toolbar>
-  <mat-toolbar-row>
-    <span>A School Demo</span>
-  </mat-toolbar-row>
-</mat-toolbar>
+<div class="app-container">
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+    <span>
+      <button mat-icon-button (click)="menu.toggle()">
+        <mat-icon>dashboard</mat-icon>
+      </button>
+    </span>
+      <h1>A School Demo</h1>
+      <span class="toolbar-space"></span>
+      <button mat-icon-button [matMenuTriggerFor]="accountMenu">
+        <mat-icon>account_box</mat-icon>
+      </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
 
-<router-outlet></router-outlet>
+  <mat-sidenav-container class="app-sidenav-container">
+    <mat-sidenav #menu position="start" mode="side" opened="true" fixedInViewport="true" fixedBottomgap="0"
+                 fixedTopGap="64">
+      <mat-accordion>
+        <mat-expansion-panel expanded="true">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Student Data
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-nav-list>
+            <a mat-list-item routerLink="/student">
+              Student List
+            </a>
+          </mat-nav-list>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Teacher Data
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-nav-list>
+            <a mat-list-item routerLink="/teacher">
+              Teacher List
+            </a>
+          </mat-nav-list>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Book Data
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-nav-list>
+            <a mat-list-item routerLink="/book">
+              Book List
+            </a>
+          </mat-nav-list>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
+
+<mat-menu #accountMenu>
+  <button mat-menu-item>Setting</button>
+  <button mat-menu-item (click)="confirmQuit()">Logout</button>
+</mat-menu>
+
+

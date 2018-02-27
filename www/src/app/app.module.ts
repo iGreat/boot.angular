@@ -7,21 +7,43 @@ import {StudentComponent} from './student/student.component';
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {
-  MatButtonModule, MatCardModule, MatGridListModule, MatIconModule, MatMenuModule, MatSidenavModule,
+  MatButtonModule,
+  MatCardModule,
+  MatDialogModule,
+  MatExpansionModule,
+  MatFormFieldModule,
+  MatGridListModule,
+  MatIconModule,
+  MatInputModule,
+  MatListModule,
+  MatMenuModule,
+  MatPaginatorModule, MatSelectModule,
+  MatSidenavModule,
+  MatSortModule,
+  MatTableModule,
   MatToolbarModule
 } from "@angular/material";
-import { MenuComponent } from './menu/menu.component';
-import {AppRouterModule} from "./app.router.module";
+import {MenuComponent} from './menu/menu.component';
+import {AppRouterModule} from "./app-router.module";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {TeacherComponent} from './teacher/teacher.component';
+import {BookComponent} from './book/book.component';
+import {StudentDetailComponent} from './student-detail/student-detail.component';
+import {StudentService} from "./service/student.service";
 
 
 @NgModule({
   declarations: [
     AppComponent,
     StudentComponent,
-    MenuComponent
+    MenuComponent,
+    TeacherComponent,
+    BookComponent,
+    StudentDetailComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
 
@@ -33,11 +55,22 @@ import {AppRouterModule} from "./app.router.module";
     MatIconModule,
     MatSidenavModule,
     MatCardModule,
+    MatExpansionModule,
+    MatListModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatDialogModule,
+    MatSelectModule,
 
     //route
     AppRouterModule
   ],
-  providers: [],
+  entryComponents: [StudentDetailComponent],
+
+  providers: [StudentService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

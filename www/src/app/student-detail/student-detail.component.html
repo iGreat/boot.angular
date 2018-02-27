@@ -1,0 +1,19 @@
+<h1 mat-dialog-title>Edit Student</h1>
+<div mat-dialog-content class="student-dialog">
+  <mat-form-field>
+    <input matInput placeholder="Name" required>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput type="number" max="150" min="1" required placeholder="Age">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select placeholder="Gender">
+      <mat-option value="1">Male</mat-option>
+      <mat-option value="2">Female</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button (click)="close()">Close</button>
+  <button mat-raised-button>Save</button>
+</div>
