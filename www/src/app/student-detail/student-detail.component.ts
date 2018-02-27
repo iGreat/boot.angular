@@ -1,6 +1,9 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material";
-import {Student} from "../model/student";
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
+import {Student} from '../model/student';
+import {StudentService} from '../service/student.service';
+import {Gender, Genders} from '../model/gender';
+import {OkResult} from '../model/okResult';
 
 @Component({
   selector: 'app-student-detail',
@@ -10,20 +13,31 @@ import {Student} from "../model/student";
 export class StudentDetailComponent implements OnInit {
   student: Student;
 
-  genders: [{ name: 'Male', value: 1 }, { name: 'Female', value: 2 }];
+  genders: Gender[];
 
   constructor(public dialogRef: MatDialogRef<StudentDetailComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: any) {
+              @Inject(MAT_DIALOG_DATA) public data: Student,
+              public studentService: StudentService) {
   }
 
   ngOnInit() {
-    if (this.data == null) {
-      this.student = new Student();
-    }
+    this.genders = Genders;
+    this.student = this.data;
   }
 
   close() {
     this.dialogRef.close();
+  }
+
+  saveStudent() {
+    this.studentService.saveStudent(this.student)
+      .subscribe((next:OkResult) => {
+        if (next.success) {
+          alert('save success');
+        } else {
+          alert('error:' + next.message);
+        }
+      });
   }
 
 }

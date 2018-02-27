@@ -15,24 +15,19 @@
 </mat-toolbar>
 
 <mat-table #studentList [dataSource]="dataSource">
-  <ng-container matColumnDef="position">
-    <mat-header-cell *matHeaderCellDef>No .</mat-header-cell>
-    <mat-cell *matCellDef="let e"> {{e.position}}</mat-cell>
-  </ng-container>
-
   <ng-container matColumnDef="name">
     <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
     <mat-cell *matCellDef="let e"> {{e.name}}</mat-cell>
   </ng-container>
 
-  <ng-container matColumnDef="weight">
-    <mat-header-cell *matHeaderCellDef>Weight</mat-header-cell>
-    <mat-cell *matCellDef="let e"> {{e.weight}}</mat-cell>
+  <ng-container matColumnDef="age">
+    <mat-header-cell *matHeaderCellDef>Age</mat-header-cell>
+    <mat-cell *matCellDef="let e"> {{e.age}}</mat-cell>
   </ng-container>
 
-  <ng-container matColumnDef="symbol">
+  <ng-container matColumnDef="gender">
     <mat-header-cell *matHeaderCellDef> Symbol</mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.symbol}}</mat-cell>
+    <mat-cell *matCellDef="let element"> {{element.gender.text}}</mat-cell>
   </ng-container>
 
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

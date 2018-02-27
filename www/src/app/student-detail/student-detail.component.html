@@ -1,19 +1,20 @@
 <h1 mat-dialog-title>Edit Student</h1>
 <div mat-dialog-content class="student-dialog">
   <mat-form-field>
-    <input matInput placeholder="Name" required>
+    <input matInput placeholder="Name" required [(ngModel)]="student.name">
   </mat-form-field>
   <mat-form-field>
-    <input matInput type="number" max="150" min="1" required placeholder="Age">
+    <input matInput type="number" max="150" min="1" required placeholder="Age" [(ngModel)]="student.age">
   </mat-form-field>
   <mat-form-field>
-    <mat-select placeholder="Gender">
-      <mat-option value="1">Male</mat-option>
-      <mat-option value="2">Female</mat-option>
+    <mat-select placeholder="Gender" [(ngModel)]="student.gender">
+      <mat-option *ngFor="let gender of genders" [value]="gender">
+        {{gender.text}}
+      </mat-option>
     </mat-select>
   </mat-form-field>
 </div>
 <div mat-dialog-actions>
   <button mat-raised-button (click)="close()">Close</button>
-  <button mat-raised-button>Save</button>
+  <button mat-raised-button (click)="saveStudent()">Save</button>
 </div>

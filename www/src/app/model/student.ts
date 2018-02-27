@@ -1,7 +1,7 @@
-import {Gender} from "./gender";
+import {Gender} from './gender';
 
 export class Student {
   name: string;
   age: number;
-  gender: Gender
+  gender: Gender;
 }
