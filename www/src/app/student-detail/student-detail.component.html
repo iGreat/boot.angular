@@ -7,9 +7,9 @@
     <input matInput type="number" max="150" min="1" required placeholder="Age" [(ngModel)]="student.age">
   </mat-form-field>
   <mat-form-field>
-    <mat-select placeholder="Gender" [(ngModel)]="student.gender">
+    <mat-select placeholder="Gender" [(value)]="student.gender">
       <mat-option *ngFor="let gender of genders" [value]="gender">
-        {{gender.text}}
+        {{gender.text.toUpperCase()}}
       </mat-option>
     </mat-select>
   </mat-form-field>

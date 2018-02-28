@@ -2,10 +2,21 @@ package boot.domain;
 
 import boot.common.Gender;
 
+import java.util.UUID;
+
 public class Student {
+    private UUID id;
     private String name;
     private Integer age;
     private Gender gender;
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;

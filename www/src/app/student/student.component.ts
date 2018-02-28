@@ -16,7 +16,7 @@ export class StudentComponent implements OnInit {
   searchText: string;
   pageEvent: PageEvent;
 
-  displayedColumns = ['name', 'age', 'gender'];
+  displayedColumns = ['name', 'age', 'gender', 'editor'];
   dataSource: Student[];
 
   constructor(public dialog: MatDialog,
@@ -54,6 +54,12 @@ export class StudentComponent implements OnInit {
     dialogRef.afterClosed().subscribe((next: any) => {
       //refresh data
       this.searchStudents();
+    });
+  }
+
+  editStudent(student: Student) {
+    let dialogRef = this.dialog.open(StudentDetailComponent, {
+      data: student
     });
   }
 

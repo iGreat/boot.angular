@@ -23,6 +23,13 @@ export class StudentDetailComponent implements OnInit {
   ngOnInit() {
     this.genders = Genders;
     this.student = this.data;
+
+    if (this.student.id)
+      for (let g of this.genders) {
+        if (g.value === this.student.gender.value) {
+          this.student.gender = g;
+        }
+      }
   }
 
   close() {
@@ -39,5 +46,4 @@ export class StudentDetailComponent implements OnInit {
         }
       });
   }
-
 }

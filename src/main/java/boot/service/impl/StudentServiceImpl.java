@@ -40,12 +40,20 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public void saveStudent(Student student) {
-        StudentEntity studentEntity = new StudentEntity();
-        studentEntity.setId(UUID.randomUUID());
-        studentEntity.setName(student.getName());
-        studentEntity.setAge(student.getAge());
-        studentEntity.setGender(student.getGender());
+        if (student.getId() == null) {
+            StudentEntity studentEntity = new StudentEntity();
+            studentEntity.setId(UUID.randomUUID());
+            studentEntity.setName(student.getName());
+            studentEntity.setAge(student.getAge());
+            studentEntity.setGender(student.getGender());
+            studentRepository.save(studentEntity);
+        } else {
+            StudentEntity studentEntity = studentRepository.findOne(student.getId());
+            studentEntity.setName(student.getName());
+            studentEntity.setAge(student.getAge());
+            studentEntity.setGender(student.getGender());
+            studentRepository.save(studentEntity);
+        }
 
-        studentRepository.save(studentEntity);
     }
 }

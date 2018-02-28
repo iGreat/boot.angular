@@ -10,7 +10,7 @@
 
   <div>
     <button mat-raised-button (click)="addStudent()">New</button>
-    <button mat-raised-button>Delete</button>
+    <button mat-raised-button color="warn">Delete</button>
   </div>
 </mat-toolbar>
 
@@ -28,6 +28,15 @@
   <ng-container matColumnDef="gender">
     <mat-header-cell *matHeaderCellDef>Gender</mat-header-cell>
     <mat-cell *matCellDef="let element"> {{element.gender.text}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="editor">
+    <mat-header-cell *matHeaderCellDef>#</mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <button mat-icon-button (click)="editStudent(element)">
+        <mat-icon>mode_edit</mat-icon>
+      </button>
+    </mat-cell>
   </ng-container>
 
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

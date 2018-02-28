@@ -7,6 +7,6 @@ export interface Gender {
  * static gender data,mapper to server side model
  */
 export const Genders: Gender[] = [
-  {value: 1, text: 'Male'},
-  {value: 2, text: 'Female'}
+  {value: 1, text: 'male'},
+  {value: 2, text: 'female'}
 ];
