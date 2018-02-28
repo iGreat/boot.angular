@@ -1,8 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {MatDialog} from '@angular/material';
+import {MatDialog, PageEvent} from '@angular/material';
 import {StudentDetailComponent} from '../student-detail/student-detail.component';
 import {Student} from '../model/student';
 import {StudentService} from '../service/student.service';
+import {StudentSearch} from '../model/student-search';
+import {Page} from '../model/page';
 
 @Component({
   selector: 'app-student',
@@ -10,6 +12,9 @@ import {StudentService} from '../service/student.service';
   styleUrls: ['./student.component.css']
 })
 export class StudentComponent implements OnInit {
+
+  searchText: string;
+  pageEvent: PageEvent;
 
   displayedColumns = ['name', 'age', 'gender'];
   dataSource: Student[];
@@ -19,11 +24,27 @@ export class StudentComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.studentService.getStudents().subscribe((value: Student[]) => {
-      this.dataSource = value;
-    });
+    if (this.pageEvent == null) {
+      this.pageEvent = new PageEvent();
+      this.pageEvent.pageIndex = 0;
+      this.pageEvent.pageSize = 10;
+      this.pageEvent.length = 0;
+    }
+
+    this.searchStudents();
   }
 
+  searchStudents() {
+    let studentSearch: StudentSearch = new StudentSearch();
+    studentSearch.name = this.searchText;
+    studentSearch.pageIndex = this.pageEvent.pageIndex;
+    studentSearch.pageSize = this.pageEvent.pageSize;
+
+    this.studentService.getStudents(studentSearch).subscribe((value: Page<Student>) => {
+      this.dataSource = value.content;
+      this.pageEvent.length = value.totalElements;
+    });
+  }
 
   addStudent() {
     let dialogRef = this.dialog.open(StudentDetailComponent, {
@@ -32,7 +53,12 @@ export class StudentComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((next: any) => {
       //refresh data
+      this.searchStudents();
     });
   }
 
+  pageChange(pageEvent: PageEvent) {
+    this.pageEvent = pageEvent;
+    this.searchStudents();
+  }
 }

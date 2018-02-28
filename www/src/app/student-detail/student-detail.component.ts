@@ -31,9 +31,9 @@ export class StudentDetailComponent implements OnInit {
 
   saveStudent() {
     this.studentService.saveStudent(this.student)
-      .subscribe((next:OkResult) => {
+      .subscribe((next: OkResult) => {
         if (next.success) {
-          alert('save success');
+          this.close();
         } else {
           alert('error:' + next.message);
         }

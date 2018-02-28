@@ -4,13 +4,16 @@ import boot.domain.Student;
 import boot.entity.StudentEntity;
 import boot.respository.StudentRepository;
 import boot.service.StudentService;
+import boot.viewmodel.StudentSearch;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
-import java.util.List;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 @Service
 public class StudentServiceImpl implements StudentService {
@@ -24,16 +27,15 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public List<Student> getAllStudents() {
-        return studentRepository.findAll().stream()
-                .map(t -> convert(t))
-                .collect(Collectors.toList());
-    }
+    public Page<Student> getAllStudents(StudentSearch studentSearch) {
+        Pageable pageable = new PageRequest(studentSearch.getPageIndex(), studentSearch.getPageSize());
 
-    @Override
-    public String testToUpper(String in) throws InterruptedException {
-        Thread.sleep(3000L);
-        return in.toUpperCase();
+        if (!StringUtils.hasText(studentSearch.getName()))
+            return studentRepository.findAll(pageable)
+                    .map(StudentServiceImpl::convert);
+        else
+            return studentRepository.findByNameContains(studentSearch.getName(), pageable)
+                    .map(StudentServiceImpl::convert);
     }
 
     @Override
