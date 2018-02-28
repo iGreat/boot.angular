@@ -1,8 +1,8 @@
 import {Gender} from './gender';
 
-export class Student {
-  id: string;
-  name: string;
-  age: number;
-  gender: Gender;
+export interface Student {
+  id?: number;
+  name?: string;
+  age?: number;
+  gender?: Gender;
 }

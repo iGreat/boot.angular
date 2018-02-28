@@ -8,7 +8,7 @@ import java.util.UUID;
 @Entity
 @Table(name = "t_score")
 public class ScoreEntity {
-    private UUID id;
+    private Long id;
     private float result;
     private ScoreLevel level;
     private boolean bPassing;
@@ -17,11 +17,12 @@ public class ScoreEntity {
     private BookEntity book;
 
     @Id
-    public UUID getId() {
+    @GeneratedValue
+    public Long getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

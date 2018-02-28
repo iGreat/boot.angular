@@ -1,25 +1,23 @@
 package boot.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Set;
 import java.util.UUID;
 
 @Entity
 @Table(name = "t_course")
 public class CourseEntity {
-    private UUID id;
+    private Long id;
     private String name;
     private Set<ScoreEntity> scores;
 
     @Id
-    public UUID getId() {
+    @GeneratedValue
+    public Long getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

@@ -1,8 +1,8 @@
 /**
  * spring data page
  */
-export class Page<T> {
-  content: T[];
+export interface Page<T> {
+  content?: T[];
   last: boolean;
   totalElements: number;
   totalPages: number;

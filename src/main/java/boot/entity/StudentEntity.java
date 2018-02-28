@@ -4,23 +4,23 @@ import boot.common.Gender;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.UUID;
 
 @Entity
 @Table(name = "t_student")
 public class StudentEntity {
-    private UUID id;
+    private Long id;
     private String name;
     private Integer age;
     private Gender gender;
     private List<ScoreEntity> scores;
 
     @Id
-    public UUID getId() {
+    @GeneratedValue
+    public Long getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

@@ -1,5 +1,5 @@
-export class StudentSearch {
-  name: string;
+export interface StudentSearch {
+  name?: string;
   pageIndex: number;
   pageSize: number;
 }

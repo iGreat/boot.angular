@@ -5,16 +5,16 @@ import boot.common.Gender;
 import java.util.UUID;
 
 public class Student {
-    private UUID id;
+    private Long id;
     private String name;
     private Integer age;
     private Gender gender;
 
-    public UUID getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

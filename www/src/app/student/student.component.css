@@ -1,3 +1,7 @@
 .searchBar{
   flex: 1;
 }
+
+.mat-column-select {
+  overflow: initial;
+}

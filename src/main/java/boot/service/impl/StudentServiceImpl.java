@@ -42,7 +42,6 @@ public class StudentServiceImpl implements StudentService {
     public void saveStudent(Student student) {
         if (student.getId() == null) {
             StudentEntity studentEntity = new StudentEntity();
-            studentEntity.setId(UUID.randomUUID());
             studentEntity.setName(student.getName());
             studentEntity.setAge(student.getAge());
             studentEntity.setGender(student.getGender());

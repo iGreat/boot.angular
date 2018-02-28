@@ -16,7 +16,7 @@ export class StudentComponent implements OnInit {
   searchText: string;
   pageEvent: PageEvent;
 
-  displayedColumns = ['name', 'age', 'gender', 'editor'];
+  displayedColumns = ['select', 'name', 'age', 'gender', 'editor'];
   dataSource: Student[];
 
   constructor(public dialog: MatDialog,
@@ -24,21 +24,21 @@ export class StudentComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.pageEvent == null) {
-      this.pageEvent = new PageEvent();
-      this.pageEvent.pageIndex = 0;
-      this.pageEvent.pageSize = 10;
-      this.pageEvent.length = 0;
-    }
+    this.pageEvent = {
+      pageIndex: 0,
+      pageSize: 10,
+      length: 0
+    };
 
     this.searchStudents();
   }
 
   searchStudents() {
-    let studentSearch: StudentSearch = new StudentSearch();
-    studentSearch.name = this.searchText;
-    studentSearch.pageIndex = this.pageEvent.pageIndex;
-    studentSearch.pageSize = this.pageEvent.pageSize;
+    let studentSearch: StudentSearch = {
+      name: this.searchText,
+      pageIndex: this.pageEvent.pageIndex,
+      pageSize: this.pageEvent.pageSize
+    };
 
     this.studentService.getStudents(studentSearch).subscribe((value: Page<Student>) => {
       this.dataSource = value.content;
@@ -48,7 +48,7 @@ export class StudentComponent implements OnInit {
 
   addStudent() {
     let dialogRef = this.dialog.open(StudentDetailComponent, {
-      data: new Student()
+      data: {}
     });
 
     dialogRef.afterClosed().subscribe((next: any) => {

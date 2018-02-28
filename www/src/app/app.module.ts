@@ -9,6 +9,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {
   MatButtonModule,
   MatCardModule,
+  MatCheckboxModule,
   MatDialogModule,
   MatExpansionModule,
   MatFormFieldModule,
@@ -65,6 +66,7 @@ import {ConfirmDlgComponent} from './confirm-dlg/confirm-dlg.component';
     MatPaginatorModule,
     MatSortModule,
     MatInputModule,
+    MatCheckboxModule,
     MatFormFieldModule,
     MatDialogModule,
     MatSelectModule,
