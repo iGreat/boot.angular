@@ -48,10 +48,12 @@ public class StudentServiceImpl implements StudentService {
             studentRepository.save(studentEntity);
         } else {
             StudentEntity studentEntity = studentRepository.findById(student.getId()).orElse(null);
-            studentEntity.setName(student.getName());
-            studentEntity.setAge(student.getAge());
-            studentEntity.setGender(student.getGender());
-            studentRepository.save(studentEntity);
+            if (studentEntity != null) {
+                studentEntity.setName(student.getName());
+                studentEntity.setAge(student.getAge());
+                studentEntity.setGender(student.getGender());
+                studentRepository.save(studentEntity);
+            }
         }
     }
 }
