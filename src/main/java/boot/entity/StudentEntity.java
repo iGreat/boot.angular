@@ -1,6 +1,6 @@
 package boot.entity;
 
-import boot.common.Gender;
+import boot.common.enums.Gender;
 
 import javax.persistence.*;
 import java.util.List;

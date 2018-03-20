@@ -1,8 +1,6 @@
 package boot.domain;
 
-import boot.common.Gender;
-
-import java.util.UUID;
+import boot.common.enums.Gender;
 
 public class Student {
     private Long id;

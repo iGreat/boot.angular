@@ -1,9 +1,8 @@
 package boot.entity;
 
-import boot.common.ScoreLevel;
+import boot.common.enums.ScoreLevel;
 
 import javax.persistence.*;
-import java.util.UUID;
 
 @Entity
 @Table(name = "t_score")
