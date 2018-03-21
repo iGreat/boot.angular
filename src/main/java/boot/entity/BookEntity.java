@@ -10,7 +10,7 @@ public class BookEntity {
     private ScoreEntity score;
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getId() {
         return id;
     }

@@ -15,7 +15,7 @@ public class StudentEntity {
     private List<ScoreEntity> scores;
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getId() {
         return id;
     }

@@ -12,7 +12,7 @@ public class CourseEntity {
     private Set<ScoreEntity> scores;
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getId() {
         return id;
     }

@@ -16,7 +16,7 @@ public class ScoreEntity {
     private BookEntity book;
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getId() {
         return id;
     }
